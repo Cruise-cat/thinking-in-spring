@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 导入 -->
+    <import resource="dependency-lookup-context.xml"/>
+
+    <!-- 根据名称注入 -->
+    <bean id="userRepositoryByName"
+          class="com.cruise.thinking.in.spring.ioc.container.overview.repository.UserRepositoryByName"
+          autowire="byName"/>
+
+    <!-- 根据类型注入 -->
+    <bean id="userRepositoryByType"
+          class="com.cruise.thinking.in.spring.ioc.container.overview.repository.UserRepositoryByType"
+          autowire="byType">
+        <!--<property name="users">
+            <util:list>
+                <ref bean="user"/>
+                <ref bean="superUser"/>
+            </util:list>
+        </property>-->
+    </bean>
+
+    <!-- 注入容器内建Bean 不指定 autowire="byType" 就无法注入-->
+    <bean id="repositoryByInnerBean"
+          class="com.cruise.thinking.in.spring.ioc.container.overview.repository.RepositoryByInnerBean"
+          autowire="byType"/>
+
+    <!-- 设置为原型bean -->
+    <bean id="student" class="com.cruise.thinking.in.spring.ioc.container.overview.domain.Student" scope="prototype"/>
+    <!-- 延迟注入 -->
+    <bean id="repositoryLazy"
+          class="com.cruise.thinking.in.spring.ioc.container.overview.repository.RepositoryLazy"
+          autowire="byType"/>
+
+    <!-- 注入BeanFactory -->
+    <bean id="repositoryForBeanFactory"
+          class="com.cruise.thinking.in.spring.ioc.container.overview.repository.RepositoryForBeanFactory"
+          autowire="byType"/>
+</beans>

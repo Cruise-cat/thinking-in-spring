@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean有如下实现类 -->
+    <!-- org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean -->
+    <!-- org.springframework.beans.factory.serviceloader.ServiceFactoryBean -->
+    <!-- org.springframework.beans.factory.serviceloader.ServiceListFactoryBean -->
+    <bean id="userFactoryServiceLoader"
+          class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <property name="serviceType" value="com.cruise.thinking.in.spring.bean.definition.factory.UserFactory"/>
+    </bean>
+
+</beans>

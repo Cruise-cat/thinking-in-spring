@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.cruise.thinking.in.spring.ioc.container.overview.domain.User">
+        <property name="id" value="1"></property>
+        <property name="name" value="Cruise"></property>
+    </bean>
+
+    <!-- 使用 ObjectFactory 的实现 TargetBeanObjectFactory 实现延迟加载 -->
+    <!-- TargetBeanObjectFactory 是 ObjectFactoryCreatingFactoryBean的 内部类-->
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <!-- 配置关联的 beanName -->
+        <property name="targetBeanName" value="user"></property>
+    </bean>
+
+    <!-- 使用 parent 继承 user的属性 -->
+    <bean id="superUser" class="com.cruise.thinking.in.spring.ioc.container.overview.domain.SuperUser"
+          parent="user" primary="true">
+        <property name="address" value="Beijing"></property>
+    </bean>
+</beans>
