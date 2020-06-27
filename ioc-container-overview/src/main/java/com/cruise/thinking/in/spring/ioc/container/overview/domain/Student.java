@@ -34,4 +34,8 @@ public class Student {
     public void initStudent(){
         System.out.println("initStudent");
     }
+
+    public void destroyStudent(){
+        System.out.println("destroyStudent");
+    }
 }

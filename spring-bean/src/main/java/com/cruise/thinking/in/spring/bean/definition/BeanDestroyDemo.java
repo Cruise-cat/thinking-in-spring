@@ -7,35 +7,36 @@ import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 
 /**
- * Bean 初始化示例
+ * 销毁 Bean 示例
  *
  * @author Cruise
  * @version 1.0
- * @since 2020/6/26
+ * @since 2020/6/27
  */
-@Configuration
-public class BeanInitializationDemo {
+public class BeanDestroyDemo {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(BeanInitializationDemo.class);
 
-        // 使用AbstractBeanDefinition#setInitMethodName自定义初始化方法
+        // 使用AbstractBeanDefinition#setDestroyMethodName自定义销毁方法
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(Student.class)
-                .setInitMethodName("initStudent").getBeanDefinition();
+                .setDestroyMethodName("destroyStudent").getBeanDefinition();
         context.registerBeanDefinition("student",beanDefinition);
+
+        context.register(BeanDestroyDemo.class);
 
         context.refresh();
         System.out.println("Spring上下文启动了");
+        UserFactory bean = context.getBean(UserFactory.class);
+        System.out.println(bean);
+        System.out.println("Spring上下文准备关闭");
         context.close();
+        System.out.println("Spring上下文关闭了");
     }
 
-    @Bean(initMethod = "myInit")
-    @Lazy // 延迟初始化
+    @Bean(destroyMethod = "myDestroy")
     public UserFactory userFactory() {
         return new DefaultUserFactory();
     }
