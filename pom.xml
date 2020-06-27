@@ -10,6 +10,7 @@
     <modules>
         <module>ioc-container-overview</module>
         <module>spring-bean</module>
+        <module>dependency-lookup</module>
     </modules>
     <packaging>pom</packaging>
     <description>极客时间-小马哥讲Spring核心编程思想</description>
