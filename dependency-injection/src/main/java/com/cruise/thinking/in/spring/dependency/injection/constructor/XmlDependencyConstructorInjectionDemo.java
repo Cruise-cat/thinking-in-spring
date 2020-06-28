@@ -5,7 +5,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
- * 基于 xml 资源的 手动 Constructor 注入示例
+ * 基于 xml 资源的手动 Constructor 注入示例
  *
  * @author Cruise
  * @version 1.0

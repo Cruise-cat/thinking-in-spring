@@ -8,7 +8,9 @@
 
     <!-- xml 手动 constructor 注入 -->
     <bean class="com.cruise.thinking.in.spring.dependency.injection.holder.UserHolder">
-       <constructor-arg name="user" ref="superUser"/>
+        <!-- 使用name或者index都可以 -->
+       <!--<constructor-arg name="user" ref="superUser"/>-->
+        <constructor-arg index="0" ref="superUser"/>
     </bean>
 
 </beans>

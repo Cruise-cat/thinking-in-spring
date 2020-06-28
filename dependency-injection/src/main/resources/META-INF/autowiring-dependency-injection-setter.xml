@@ -6,6 +6,8 @@
 
     <import resource="classpath:/META-INF/dependency-lookup-context.xml"/>
 
+    <!-- 切换 byName or byType 分别查看结果 -->
+
     <!--<bean class="com.cruise.thinking.in.spring.dependency.injection.holder.UserHolder" autowire="byType"/>-->
 
     <bean class="com.cruise.thinking.in.spring.dependency.injection.holder.UserHolder" autowire="byName"/>

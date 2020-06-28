@@ -7,7 +7,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * 基于 API 的手动 Setter 方法注入示例
+ * 基于 API 的手动 Setter 注入示例
  *
  * @author Cruise
  * @version 1.0
@@ -38,7 +38,7 @@ public class ApiDependencySetterInjectionDemo {
 
     private static BeanDefinition createBeanDefinition() {
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(UserHolder.class);
-        // Setter 注入 是没有顺序的
+        // Setter 注入是没有顺序的
         beanDefinitionBuilder.addPropertyReference("user", "superUser");
 
         return beanDefinitionBuilder.getBeanDefinition();

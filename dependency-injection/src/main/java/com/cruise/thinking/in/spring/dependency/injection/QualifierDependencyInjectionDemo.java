@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Primary;
 import java.util.List;
 
 /**
- * {@link Qualifier} 限定依赖注入示例
+ * 通过 {@link Qualifier} 限定依赖注入示例
+ * <p>可以通过 {@link Qualifier} 对 Bean 进行分组</p>
  *
  * @author Cruise
  * @version 1.0
@@ -20,9 +21,17 @@ import java.util.List;
  */
 public class QualifierDependencyInjectionDemo {
 
+    /**
+     * 注入 User 类型的 Bean ，如果存在多个则注入 Primary 的 Bean
+     *
+     */
     @Autowired
     private User user;
 
+    /**
+     * 注入 User 类型的 且 beanName是 user的
+     *
+     */
     @Autowired
     @Qualifier("user")
     private User namedUser;
@@ -40,20 +49,24 @@ public class QualifierDependencyInjectionDemo {
 
     @Bean
     public User user() {
-        return new User();
+        User user = new User();
+        user.setId(1L);
+        return user;
     }
 
     @Bean
     @Primary
     public SuperUser superUser() {
-        return new SuperUser();
+        SuperUser superUser = new SuperUser();
+        superUser.setId(2L);
+        return superUser;
     }
 
     @Bean
     @Qualifier // 进行分组
     public User user1() {
         User user = new User();
-        user.setId(7L);
+        user.setId(3L);
         return user;
     }
 
@@ -61,7 +74,7 @@ public class QualifierDependencyInjectionDemo {
     @Qualifier // 进行分组
     public User user2() {
         User user = new User();
-        user.setId(8L);
+        user.setId(4L);
         return user;
     }
 
@@ -69,7 +82,7 @@ public class QualifierDependencyInjectionDemo {
     @UserGroup
     public User user3() {
         User user = new User();
-        user.setId(9L);
+        user.setId(5L);
         return user;
     }
 
@@ -77,7 +90,7 @@ public class QualifierDependencyInjectionDemo {
     @UserGroup
     public User user4() {
         User user = new User();
-        user.setId(10L);
+        user.setId(6L);
         return user;
     }
 
@@ -91,11 +104,11 @@ public class QualifierDependencyInjectionDemo {
         System.out.println("bean.user" + bean.user);
         // 输出 限定了名称的 User
         System.out.println("bean.namedUser" + bean.namedUser);
-        // 输出 全部 User
+        // 输出 全部 User,包含使用 @Qualifier 和 @UserGroup 注册的 Bean
         System.out.println("bean.allUsers" + bean.allUsers);
-        // 输出 通过 @Qualifier 分组的 User
+        // 输出 通过 @Qualifier 分组的 User，仅包含使用 @Qualifier 和 @UserGroup 注册的 Bean
         System.out.println("bean.qualifierUsers" + bean.qualifierUsers);
-        // 输出 通过 @UserGroup 扩展的 User
+        // 输出 通过 @UserGroup 扩展的 User，仅包含使用 @UserGroup 注册的 Bean
         System.out.println("bean.groupUsers" + bean.groupUsers);
         context.close();
     }

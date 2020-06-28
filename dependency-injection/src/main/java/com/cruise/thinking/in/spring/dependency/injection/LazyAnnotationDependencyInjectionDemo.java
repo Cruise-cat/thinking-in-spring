@@ -8,7 +8,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * 延迟依赖注入示例
+ * 通过{@link ObjectProvider}延迟依赖注入示例
  *
  * @author Cruise
  * @version 1.0
@@ -39,8 +39,11 @@ public class LazyAnnotationDependencyInjectionDemo {
         LazyAnnotationDependencyInjectionDemo bean = context.getBean(LazyAnnotationDependencyInjectionDemo.class);
 
         System.out.println(bean.user);
+        System.out.println("===========");
 
         bean.users.forEach(System.out::println);
+
+        System.out.println("===========");
 
         System.out.println(bean.users1.getObject());
         context.close();

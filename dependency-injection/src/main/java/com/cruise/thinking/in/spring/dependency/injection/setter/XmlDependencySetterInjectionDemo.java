@@ -5,7 +5,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
- * 基于 xml 资源的 手动 Setter 方法注入 示例
+ * 基于 xml 资源的手动 Setter 注入示例
  *
  * @author Cruise
  * @version 1.0

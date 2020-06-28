@@ -18,7 +18,7 @@ import org.springframework.core.annotation.Order;
 import javax.inject.Inject;
 
 /**
- * 自定义 {@link Autowired}注解 实现依赖注入
+ * 自定义 {@link Autowired}注解实现依赖注入
  *
  * @author Cruise
  * @version 1.0
@@ -83,7 +83,8 @@ public class CustomAutowiredAnnotationDependencyInjectionDemo {
      * 这种方式不会清空{@link Autowired}、{@link Value}、{@link Inject}
      *
      * 而是在执行完 Spring 内置的 {@link AutowiredAnnotationBeanPostProcessor} 后再执行
-     * 这个方法注入的自定义的 {@link AutowiredAnnotationBeanPostProcessor}
+     * 这个方法注入的自定义的 {@link AutowiredAnnotationBeanPostProcessor}，相当于此时容器内
+     * 存在两个{@link AutowiredAnnotationBeanPostProcessor}的后置处理器
      *
      * @return
      */

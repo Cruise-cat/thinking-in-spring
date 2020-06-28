@@ -4,8 +4,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.Aware;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -13,6 +15,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  *
  * @author Cruise
  * @version 1.0
+ * @see BeanFactoryAware
+ * @see ApplicationContextAware
+ * @see BeanNameAware
+ * @see EnvironmentAware
  * @since 2020/6/27
  */
 public class AwareInterfaceDependencyInjectionDemo implements BeanFactoryAware, ApplicationContextAware {

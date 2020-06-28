@@ -7,6 +7,7 @@
     <!-- 集合类型注入 -->
     <bean id="multiCityHolder" class="com.cruise.thinking.in.spring.dependency.injection.holder.MultiCityHolder">
         <property name="cities" value="BEIJING,HANGZHOU"/>
+        <!-- 二选一 -->
         <!--<property name="cityList" value="BEIJING,SHANGHAI"/>-->
         <property name="cityList">
             <list>

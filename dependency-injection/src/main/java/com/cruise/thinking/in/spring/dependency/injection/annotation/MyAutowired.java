@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * 描述：通过元注解的方式自定义 {@link Autowired} 因为 Java 不支持注解继承
- *
+ * 这种方式直接就可以使用，不需要做其他操作
  * @author Cruise
  * @version 1.0
  * @since 2020/6/27

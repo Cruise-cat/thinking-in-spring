@@ -13,11 +13,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class BaseTypeDependencyInjectionDemo {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/META-INF/base-type-dependency-injection.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                "classpath:/META-INF/base-type-dependency-injection.xml");
 
         CityHolder cityHolder = context.getBean(CityHolder.class);
 
         System.out.println(cityHolder);
+
+        System.out.println(cityHolder.getDesc().get());
 
         context.close();
     }

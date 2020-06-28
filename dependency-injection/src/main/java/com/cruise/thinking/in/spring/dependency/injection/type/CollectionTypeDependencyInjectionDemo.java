@@ -13,7 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class CollectionTypeDependencyInjectionDemo {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/META-INF/collection-type-dependency-injection.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+                "classpath:/META-INF/collection-type-dependency-injection.xml");
 
         MultiCityHolder cityHolder = context.getBean(MultiCityHolder.class);
 
