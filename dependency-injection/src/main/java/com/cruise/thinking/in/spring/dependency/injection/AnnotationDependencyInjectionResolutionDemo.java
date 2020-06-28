@@ -52,6 +52,7 @@ import java.util.Set;
  * <ol>
  *     <li>{@link AbstractAutowireCapableBeanFactory#populateBean(String, RootBeanDefinition, BeanWrapper)}是属性填充的入口，
  *     这个方法里对{@link InstantiationAwareBeanPostProcessor}进行回调</li>
+ *     <li>代码：PropertyValues pvsToUse = ibp.postProcessProperties(pvs, bw.getWrappedInstance(), beanName);</li>
  *     <li>调{@link AutowiredAnnotationBeanPostProcessor#postProcessProperties(PropertyValues, Object, String)}方法</li>
  *     <li>通过{@link AutowiredAnnotationBeanPostProcessor#findAutowiringMetadata(String, Class, PropertyValues)}方法筛选出
  *     标注了{@link Autowired}、{@link Value}、{@link Inject}注解的属性或方法</li>
@@ -61,8 +62,9 @@ import java.util.Set;
  *     <li>在{@link AutowiredAnnotationBeanPostProcessor.AutowiredFieldElement#inject}方法中调用了上面的
  *     {@link DefaultListableBeanFactory#resolveDependency(DependencyDescriptor, String, Set, TypeConverter)}方法获取
  *     需要被注入的Bean</li>
+ *     <li>先通过参数类型获取，如果存在多个类型的Bean，且存在primary Bean则注入Primary Bean</li>
+ *     <li>如果不存在Primary Bean 则通过名称判断候选的Bean</li>
  *     <li>获取到Bean后通过Java反射的方式设置宿主类的属性#{@link Field#set(Object, Object)}</li>
- *     <li>无论是通过属性注入还是方法注入都是最终设置属性的值</li>
  *     <b>{@link AutowiredAnnotationBeanPostProcessor#postProcessProperties(PropertyValues, Object, String)}方法
  *     会在Setter方法之前进行调用</b>
  * </ol>

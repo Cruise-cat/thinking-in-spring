@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 构造器参数注入 -->
+    <!-- 构造器参数注入时先根据参数类型注入，如果存在多个类型的Bean，且存在primary Bean则注入Primary Bean -->
+    <!-- 如果不存在Primary Bean 则通过名称判断注入的Bean -->
+    <bean id="userHolder" class="com.cruise.thinking.in.spring.bean.lifecycle.holder.UserHolder"
+          autowire="constructor" init-method="init" destroy-method="myDestroy">
+       <!-- <property name="num" value="1"/>-->
+        <property name="desc" value="user holder v1"/>
+    </bean>
+
+</beans>
