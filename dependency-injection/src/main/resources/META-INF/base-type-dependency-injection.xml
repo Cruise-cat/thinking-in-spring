@@ -9,7 +9,7 @@
         <!-- 注入 enum 类型 输入的是字符串 输出的是 enum -->
         <property name="city" value="BEIJING"/>
         <!-- 注入 Spring 类型 输入的是字符串 输出的是 Resource -->
-        <property name="cityResource" value="classpath:/META-INF/cityProperties"/>
+        <property name="cityResource" value="classpath:/META-INF/city.properties"/>
         <!-- 注入 Optional 类型  -->
         <property name="desc" ref="optional"/>
     </bean>
