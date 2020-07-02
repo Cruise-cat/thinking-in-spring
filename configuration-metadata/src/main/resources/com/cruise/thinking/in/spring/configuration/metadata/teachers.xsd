@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="https://time.geekbang.org/schema/teachers"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://time.geekbang.org/schema/teachers">
+
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+    <!-- 定义 Teacher 类型 复杂类型 -->
+    <xsd:complexType name="Teacher">
+        <xsd:attribute name="id" type="xsd:long" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="city" type="City"/>
+    </xsd:complexType>
+
+    <!-- 定义 Teacher 类型 简单类型 -->
+    <xsd:simpleType name="City">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="BEIJING"/>
+            <xsd:enumeration value="SHANGHAI"/>
+            <xsd:enumeration value="HANGZHOU"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- 定义 teacher 元素 -->
+    <xsd:element name="teacher" type="Teacher"/>
+
+</xsd:schema>
