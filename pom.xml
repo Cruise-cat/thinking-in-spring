@@ -27,6 +27,7 @@
         <spring.version>5.2.2.RELEASE</spring.version>
         <inject.version>1</inject.version>
         <servlet.version>3.1.0</servlet.version>
+        <yaml.version>1.18</yaml.version>
     </properties>
 
     <dependencyManagement>
@@ -51,6 +52,11 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${yaml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
