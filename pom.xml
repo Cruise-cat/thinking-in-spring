@@ -18,6 +18,8 @@
         <module>configuration-metadata</module>
         <module>resource</module>
         <module>i18n</module>
+        <module>validation</module>
+        <module>data-binding</module>
     </modules>
     <packaging>pom</packaging>
     <description>极客时间-小马哥讲Spring核心编程思想</description>
