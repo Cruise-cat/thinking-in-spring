@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- 3. 将其声明为 Spring Bean -->
+    <bean class="com.cruise.thinking.in.spring.conversion.CustomizedPropertyEditorRegistrar"/>
+
+    <!-- 声明 ConversionServiceFactoryBean 并且 name 必须为 "conversionService" -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <bean class="com.cruise.thinking.in.spring.conversion.PropertiesToStringConverter"/>
+        </property>
+    </bean>
+
+    <!-- java.util.Properties -->
+    <util:properties id="context">
+        <prop key="id">1</prop>
+        <prop key="name">mercyblitz</prop>
+    </util:properties>
+
+    <bean id="user" class="com.cruise.thinking.in.spring.conversion.domain.User">
+        <property name="id" value="1"></property>
+        <property name="name" value="Cruise"></property>
+        <property name="context"> <!-- Properties 类型 -->
+            <value>
+                id = 1
+                name = Cruise
+            </value>
+        </property>
+        <property name="contextAsText" ref="context"/> <!-- Properties -> String -->
+    </bean>
+
+</beans>
