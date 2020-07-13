@@ -12,5 +12,9 @@
     <artifactId>generic</artifactId>
     <description>泛型</description>
 
+    <properties>
+        <spring.version>4.3.26.RELEASE</spring.version>
+    </properties>
+
 
 </project>
